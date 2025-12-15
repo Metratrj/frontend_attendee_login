@@ -4,7 +4,7 @@ import * as React from "react"
 
 import {
     Sidebar,
-    SidebarContent,
+    SidebarContent, SidebarFooter,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
@@ -12,12 +12,18 @@ import {
 } from "@/components/ui/sidebar";
 import {BookOpen, Command, SquareTerminal} from "lucide-react";
 import {NavMain} from "@/components/NavMain";
+import { NavUser } from "./NavUser";
 
 const data = {
+    user: {
+        name: "Johannes Grimm",
+        email: "jgrimm@r4p1d.xyz",
+        avatar: "/avatars/shadcn.jpg",
+    },
 navMain: [
     {
         title: "Anweseinheiten",
-        url: "/attendance",
+        url: "/dashboard/attendance",
         icon: SquareTerminal,
     },
     {
@@ -27,11 +33,11 @@ navMain: [
         items: [
             {
                 title: "Gruppen",
-                url: "/groups",
+                url: "/dashboard/groups",
             },
             {
                 title: "Teilnehmer",
-                url: "/attendee",
+                url: "/dashboard/attendee",
             }
         ]
     }
@@ -62,6 +68,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarContent>
                     <NavMain items={data.navMain}/>
                 </SidebarContent>
+                <SidebarFooter>
+                    <NavUser user={data.user} />
+                </SidebarFooter>
             </Sidebar>
         </>
     );
