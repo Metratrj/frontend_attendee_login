@@ -37,7 +37,7 @@ navMain: [
             },
             {
                 title: "Teilnehmer",
-                url: "/dashboard/attendee",
+                url: "/dashboard/attendees",
             }
         ]
     }
