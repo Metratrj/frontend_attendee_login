@@ -1,13 +1,12 @@
-import postgres from "postgres";
+import {prisma} from "@/lib/prisma";
+import {type students} from "@/generated/prisma/client"
 
-const sql = postgres(process.env.POSTGRES_URL!, {ssl: 'prefer'});
-
-export async function fetchStudentsPage(query: string) {
+export async function fetchStudentsPage(query: string): Promise<students[]> {
     try {
-        //const data = await sql<[]>`SELECT * FROM students`;
+        const data: students[] = await prisma.students.findMany();
         return data;
     } catch (error) {
         console.error('Database Error:', error);
-        throw new Error("Failed to fetch students.\n"+ error);
+        throw new Error("Failed to fetch students.\n" + error);
     }
 }
