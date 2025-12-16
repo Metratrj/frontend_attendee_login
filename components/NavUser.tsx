@@ -9,6 +9,7 @@ import {
 import {BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles} from "lucide-react";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {ReactNode} from "react";
+import {ModeToggle} from "@/components/ModeToggle";
 
 export function NavUser({user}: {
     user: {
@@ -55,6 +56,7 @@ export function NavUser({user}: {
                                     <span className="truncate font-medium">{user.name}</span>
                                     <span className="truncate text-xs">{user.email}</span>
                                 </div>
+                                <ModeToggle />
                             </div>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator/>
