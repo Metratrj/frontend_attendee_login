@@ -3,6 +3,8 @@
 import {ColumnDef} from "@tanstack/react-table";
 import {groups} from "@/generated/prisma/client";
 import {Checkbox} from "@/components/ui/checkbox";
+import {Button} from "@/components/ui/button";
+import {ArrowDownUp} from "lucide-react";
 
 export const columns: ColumnDef<groups>[] = [
     {
@@ -28,15 +30,19 @@ export const columns: ColumnDef<groups>[] = [
     },
     {
         accessorKey: "name",
-        header: "Name",
+        header: ({column}) => {
+            return (
+                <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+                    Name
+                    <ArrowDownUp className="ml-2 h-4 w-4" />
+                </Button>
+            )
+        }
     },
     {
         id: "students",
         header: "Students",
-        cell: ({row}) => {
-            const group = row.original;
-            return <div>{group._count.students}</div>
-        }
+        cell: ({row}) => row.original._count.students
     },
     {
         id: "actions",

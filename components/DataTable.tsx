@@ -1,6 +1,14 @@
 "use client";
 
-import {ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable} from "@tanstack/react-table";
+import * as React from "react";
+import {
+    ColumnDef,
+    flexRender,
+    getCoreRowModel,
+    getPaginationRowModel, getSortedRowModel,
+    SortingState,
+    useReactTable
+} from "@tanstack/react-table";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {
     Pagination,
@@ -16,11 +24,18 @@ interface DataTableProps<TData, TValue> {
 }
 
 export function DataTable<TData, TValue>({columns, data}: DataTableProps<TData, TValue>) {
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        onSortingChange: setSorting,
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+        }
     });
 
 
@@ -73,7 +88,8 @@ export function DataTable<TData, TValue>({columns, data}: DataTableProps<TData, 
             <Pagination>
                 <PaginationContent>
                     <PaginationItem>
-                        <PaginationPrevious href="#" isActive={!table.getCanPreviousPage()} onClick={() => table.previousPage()}/>
+                        <PaginationPrevious href="#" isActive={!table.getCanPreviousPage()}
+                                            onClick={() => table.previousPage()}/>
                     </PaginationItem>
                     <PaginationItem>
                         <PaginationNext href="#" isActive={!table.getCanNextPage()} onClick={() => table.nextPage()}/>
