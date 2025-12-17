@@ -2,9 +2,30 @@
 
 import {ColumnDef} from "@tanstack/react-table";
 import {groups} from "@/generated/prisma/client";
-import {prisma} from "@/lib/prisma";
+import {Checkbox} from "@/components/ui/checkbox";
 
 export const columns: ColumnDef<groups>[] = [
+    {
+        id: "select",
+        header: ({table}) => (
+            <Checkbox
+                checked={table.getIsAllPageRowsSelected() ||
+                    (table.getIsSomePageRowsSelected() && "indeterminate")
+            }
+            onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+            aria-label="Select all groups"
+            />
+        ),
+        cell: ({row}) => (
+            <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => row.toggleSelected(!!value)}
+            aria-label="Select group"
+            />
+        ),
+        enableSorting: false,
+        enableHiding: false,
+    },
     {
         accessorKey: "name",
         header: "Name",
@@ -12,17 +33,14 @@ export const columns: ColumnDef<groups>[] = [
     {
         id: "students",
         header: "Students",
-        cell: async ({row}) => {
+        cell: ({row}) => {
             const group = row.original;
-            const count = await prisma.students.count({where: {groupid: group.id}});
-
-            return <div>{count}</div>
+            return <div>{group._count.students}</div>
         }
     },
     {
         id: "actions",
-        cell: ({row}) => {
-
+        cell: () => {
             return <div>Edit Delete</div>
         }
     },
