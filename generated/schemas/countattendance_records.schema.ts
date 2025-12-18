@@ -1,0 +1,10 @@
+import type { Prisma } from '../prisma/client';
+import * as z from 'zod';
+import { attendance_recordsOrderByWithRelationInputObjectSchema as attendance_recordsOrderByWithRelationInputObjectSchema } from './objects/attendance_recordsOrderByWithRelationInput.schema';
+import { attendance_recordsWhereInputObjectSchema as attendance_recordsWhereInputObjectSchema } from './objects/attendance_recordsWhereInput.schema';
+import { attendance_recordsWhereUniqueInputObjectSchema as attendance_recordsWhereUniqueInputObjectSchema } from './objects/attendance_recordsWhereUniqueInput.schema';
+import { Attendance_recordsCountAggregateInputObjectSchema as Attendance_recordsCountAggregateInputObjectSchema } from './objects/Attendance_recordsCountAggregateInput.schema';
+
+export const attendance_recordsCountSchema: z.ZodType<Prisma.attendance_recordsCountArgs> = z.object({ orderBy: z.union([attendance_recordsOrderByWithRelationInputObjectSchema, attendance_recordsOrderByWithRelationInputObjectSchema.array()]).optional(), where: attendance_recordsWhereInputObjectSchema.optional(), cursor: attendance_recordsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), Attendance_recordsCountAggregateInputObjectSchema ]).optional() }).strict() as unknown as z.ZodType<Prisma.attendance_recordsCountArgs>;
+
+export const attendance_recordsCountZodSchema = z.object({ orderBy: z.union([attendance_recordsOrderByWithRelationInputObjectSchema, attendance_recordsOrderByWithRelationInputObjectSchema.array()]).optional(), where: attendance_recordsWhereInputObjectSchema.optional(), cursor: attendance_recordsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), Attendance_recordsCountAggregateInputObjectSchema ]).optional() }).strict();

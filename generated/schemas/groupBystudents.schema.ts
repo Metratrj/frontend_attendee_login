@@ -1,0 +1,13 @@
+import type { Prisma } from '../prisma/client';
+import * as z from 'zod';
+import { studentsWhereInputObjectSchema as studentsWhereInputObjectSchema } from './objects/studentsWhereInput.schema';
+import { studentsOrderByWithAggregationInputObjectSchema as studentsOrderByWithAggregationInputObjectSchema } from './objects/studentsOrderByWithAggregationInput.schema';
+import { studentsScalarWhereWithAggregatesInputObjectSchema as studentsScalarWhereWithAggregatesInputObjectSchema } from './objects/studentsScalarWhereWithAggregatesInput.schema';
+import { StudentsScalarFieldEnumSchema } from './enums/StudentsScalarFieldEnum.schema';
+import { StudentsCountAggregateInputObjectSchema as StudentsCountAggregateInputObjectSchema } from './objects/StudentsCountAggregateInput.schema';
+import { StudentsMinAggregateInputObjectSchema as StudentsMinAggregateInputObjectSchema } from './objects/StudentsMinAggregateInput.schema';
+import { StudentsMaxAggregateInputObjectSchema as StudentsMaxAggregateInputObjectSchema } from './objects/StudentsMaxAggregateInput.schema';
+
+export const studentsGroupBySchema: z.ZodType<Prisma.studentsGroupByArgs> = z.object({ where: studentsWhereInputObjectSchema.optional(), orderBy: z.union([studentsOrderByWithAggregationInputObjectSchema, studentsOrderByWithAggregationInputObjectSchema.array()]).optional(), having: studentsScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(StudentsScalarFieldEnumSchema), _count: z.union([ z.literal(true), StudentsCountAggregateInputObjectSchema ]).optional(), _min: StudentsMinAggregateInputObjectSchema.optional(), _max: StudentsMaxAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.studentsGroupByArgs>;
+
+export const studentsGroupByZodSchema = z.object({ where: studentsWhereInputObjectSchema.optional(), orderBy: z.union([studentsOrderByWithAggregationInputObjectSchema, studentsOrderByWithAggregationInputObjectSchema.array()]).optional(), having: studentsScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(StudentsScalarFieldEnumSchema), _count: z.union([ z.literal(true), StudentsCountAggregateInputObjectSchema ]).optional(), _min: StudentsMinAggregateInputObjectSchema.optional(), _max: StudentsMaxAggregateInputObjectSchema.optional() }).strict();

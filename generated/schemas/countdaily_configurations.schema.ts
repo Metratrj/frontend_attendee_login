@@ -1,0 +1,10 @@
+import type { Prisma } from '../prisma/client';
+import * as z from 'zod';
+import { daily_configurationsOrderByWithRelationInputObjectSchema as daily_configurationsOrderByWithRelationInputObjectSchema } from './objects/daily_configurationsOrderByWithRelationInput.schema';
+import { daily_configurationsWhereInputObjectSchema as daily_configurationsWhereInputObjectSchema } from './objects/daily_configurationsWhereInput.schema';
+import { daily_configurationsWhereUniqueInputObjectSchema as daily_configurationsWhereUniqueInputObjectSchema } from './objects/daily_configurationsWhereUniqueInput.schema';
+import { Daily_configurationsCountAggregateInputObjectSchema as Daily_configurationsCountAggregateInputObjectSchema } from './objects/Daily_configurationsCountAggregateInput.schema';
+
+export const daily_configurationsCountSchema: z.ZodType<Prisma.daily_configurationsCountArgs> = z.object({ orderBy: z.union([daily_configurationsOrderByWithRelationInputObjectSchema, daily_configurationsOrderByWithRelationInputObjectSchema.array()]).optional(), where: daily_configurationsWhereInputObjectSchema.optional(), cursor: daily_configurationsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), Daily_configurationsCountAggregateInputObjectSchema ]).optional() }).strict() as unknown as z.ZodType<Prisma.daily_configurationsCountArgs>;
+
+export const daily_configurationsCountZodSchema = z.object({ orderBy: z.union([daily_configurationsOrderByWithRelationInputObjectSchema, daily_configurationsOrderByWithRelationInputObjectSchema.array()]).optional(), where: daily_configurationsWhereInputObjectSchema.optional(), cursor: daily_configurationsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), Daily_configurationsCountAggregateInputObjectSchema ]).optional() }).strict();

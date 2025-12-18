@@ -3,6 +3,16 @@ generator client {
   output   = "../generated/prisma"
 }
 
+generator zod {
+  provider = "prisma-zod-generator"
+  output = "../generated/"
+
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
+
 datasource db {
   provider = "postgresql"
 }
@@ -28,8 +38,11 @@ model daily_configurations {
 
 model students {
   id                 String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// @zod.min(2, "Username muss mindestens 2 Zeichen haben.").max(250)
   username           String               @unique @db.VarChar(255)
+  /// @zod.min(2, "Vorname muss mindestens 2 Zeichen haben.").max(250)
   firstname          String               @default("") @db.VarChar(255)
+  /// @zod.min(2, "Nachname muss mindestens 2 Zeichen haben.").max(250)
   lastname           String               @default("") @db.VarChar(255)
   password_hash      String               @db.VarChar(255)
   created_at         DateTime             @default(now()) @db.Timestamptz(6)
@@ -41,21 +54,27 @@ model students {
 
 model groups {
   id         String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// @zod.min(2, "Der Gruppenname muss 2 Zeichen oder länger sein.")
   name       String     @unique @db.VarChar(255)
   created_at DateTime   @default(now()) @db.Timestamptz(6)
   updated_at DateTime   @default(now()) @updatedAt @db.Timestamptz(6)
   students   students[]
-  color      String     @db.VarChar(10) @default("")
+  /// @zod.min(1, "Bitte Farbe auswählen.")
+  color      String     @db.VarChar(10) @default("white")
 }
 
 model user {
   id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   created_at DateTime @default(now()) @db.Timestamptz(6)
   updated_at DateTime @default(now()) @updatedAt @db.Timestamptz(6)
+  /// @zod.min(2, "Vorname muss mindestens 2 Zeichen haben.").max(250)
   firstname  String   @db.VarChar(255)
+  /// @zod.min(2, "Nachname muss mindestens 2 Zeichen haben.").max(250)
   lastname   String   @db.VarChar(255)
+  /// @zod.min(2, "Username muss mindestens 2 Zeichen haben.").max(250)
   username   String   @unique @db.VarChar(255)
-  email      String   @db.VarChar(255)
+  /// @zod.email("Ungültiges eMail Format")
+  email      String   @db.VarChar(255) @unique
   password   String   @db.VarChar(255)
 }
 

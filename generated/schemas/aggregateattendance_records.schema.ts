@@ -1,0 +1,12 @@
+import type { Prisma } from '../prisma/client';
+import * as z from 'zod';
+import { attendance_recordsOrderByWithRelationInputObjectSchema as attendance_recordsOrderByWithRelationInputObjectSchema } from './objects/attendance_recordsOrderByWithRelationInput.schema';
+import { attendance_recordsWhereInputObjectSchema as attendance_recordsWhereInputObjectSchema } from './objects/attendance_recordsWhereInput.schema';
+import { attendance_recordsWhereUniqueInputObjectSchema as attendance_recordsWhereUniqueInputObjectSchema } from './objects/attendance_recordsWhereUniqueInput.schema';
+import { Attendance_recordsCountAggregateInputObjectSchema as Attendance_recordsCountAggregateInputObjectSchema } from './objects/Attendance_recordsCountAggregateInput.schema';
+import { Attendance_recordsMinAggregateInputObjectSchema as Attendance_recordsMinAggregateInputObjectSchema } from './objects/Attendance_recordsMinAggregateInput.schema';
+import { Attendance_recordsMaxAggregateInputObjectSchema as Attendance_recordsMaxAggregateInputObjectSchema } from './objects/Attendance_recordsMaxAggregateInput.schema';
+
+export const attendance_recordsAggregateSchema: z.ZodType<Prisma.Attendance_recordsAggregateArgs> = z.object({ orderBy: z.union([attendance_recordsOrderByWithRelationInputObjectSchema, attendance_recordsOrderByWithRelationInputObjectSchema.array()]).optional(), where: attendance_recordsWhereInputObjectSchema.optional(), cursor: attendance_recordsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), Attendance_recordsCountAggregateInputObjectSchema ]).optional(), _min: Attendance_recordsMinAggregateInputObjectSchema.optional(), _max: Attendance_recordsMaxAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.Attendance_recordsAggregateArgs>;
+
+export const attendance_recordsAggregateZodSchema = z.object({ orderBy: z.union([attendance_recordsOrderByWithRelationInputObjectSchema, attendance_recordsOrderByWithRelationInputObjectSchema.array()]).optional(), where: attendance_recordsWhereInputObjectSchema.optional(), cursor: attendance_recordsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), Attendance_recordsCountAggregateInputObjectSchema ]).optional(), _min: Attendance_recordsMinAggregateInputObjectSchema.optional(), _max: Attendance_recordsMaxAggregateInputObjectSchema.optional() }).strict();
