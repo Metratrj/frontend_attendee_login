@@ -1,0 +1,34 @@
+{
+  "general": {
+    "preferredEditor": "vscode",
+    "previewFeatures": "true",
+    "disableAutoUpdate": "true",
+    "enablePromptCompletion": true
+  },
+  "ui": {
+    "showMemoryUsage": true,
+    "showCitations": true,
+    "showModelInfoInChat": true
+  },
+  "tools": {
+    "shell": {
+      "showColor": true
+    }
+  },
+  "mcpServers": {
+    "prisma-local": {
+      "command": "bunx",
+      "args": [
+        "prisma",
+        "mcp"
+      ]
+    },
+    "shadcn": {
+      "command": "bunx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    }
+  }
+}

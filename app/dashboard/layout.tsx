@@ -1,7 +1,7 @@
 import {SidebarInset, SidebarProvider, SidebarTrigger} from "@/components/ui/sidebar";
 import {AppSidebar} from "@/components/AppSidebar";
 import {Separator} from "@/components/ui/separator";
-import {Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage} from "@/components/ui/breadcrumb";
+import {BreadcrumbBar} from "@/components/BreadcrumbBar";
 
 export default function Layout({children}: { children: React.ReactNode }) {
     return (
@@ -16,15 +16,7 @@ export default function Layout({children}: { children: React.ReactNode }) {
                                 orientation="vertical"
                                 className="mr-2 data-[orientation=vertical]:h-4"
                                 />
-                            <Breadcrumb>
-                                <BreadcrumbList>
-                                    <BreadcrumbItem>
-                                        <BreadcrumbPage>
-                                            Dashboard
-                                        </BreadcrumbPage>
-                                    </BreadcrumbItem>
-                                </BreadcrumbList>
-                            </Breadcrumb>
+                            <BreadcrumbBar />
                         </div>
                     </header>
                     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -32,10 +24,6 @@ export default function Layout({children}: { children: React.ReactNode }) {
                     </div>
                 </SidebarInset>
             </SidebarProvider>
-
-
-
-
 
             {/*<div className="flex h-screen flex-col mdx:flex-row md:overflow-hidden">
                 <div className="w-full flex-none md:w-64">

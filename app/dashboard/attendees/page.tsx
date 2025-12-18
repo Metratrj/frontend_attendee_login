@@ -4,7 +4,7 @@ import {Pagination} from "@/components/ui/pagination";
 import {Table} from "@/components/ui/table";
 import Search from "@/components/Search";
 import {CreateAttendee} from "@/components/attendees/buttons";
-import {DataTable} from "@/components/DataTable";
+import {DataTable} from "@/components/DataTable/DataTable";
 import {columns} from "@/components/attendees/columns";
 
 export default async function Page(props: {
