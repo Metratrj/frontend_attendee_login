@@ -28,7 +28,7 @@ export async function fetchGroupsWithCount(query: string) {
             include: {
                 _count: {
                     select: {students: true},
-                }
+                },
             },
         });
     } catch (error) {
