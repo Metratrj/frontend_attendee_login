@@ -4,20 +4,12 @@ import {groupsCreateInputObjectZodSchema} from "@/generated/schemas";
 import {prisma} from "@/lib/prisma";
 import {redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
+import * as z from "zod";
 
-const FormSchema = groupsCreateInputObjectZodSchema;
 
-const CreateGroup = FormSchema.omit({id: true, created_at: true});
 
-export async function createGroup(formData: FormData) {
-    const validatedFields = CreateGroup.parse({
-        name: formData.get("name"),
-        color: formData.get("color"),
-    });
+export async function createGroup(data: FormValues) {
 
-    await prisma.groups.create({
-        data: validatedFields
-    });
 
     revalidatePath('/dashboard/groups');
     redirect('/dashboard/groups');

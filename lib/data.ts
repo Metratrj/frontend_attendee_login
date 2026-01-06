@@ -2,6 +2,9 @@
 
 import {prisma} from "@/lib/prisma";
 import {type students} from "@/generated/prisma/client"
+import {revalidatePath} from "next/cache";
+import {redirect} from "next/navigation";
+
 
 export async function fetchStudentsPage(query: string): Promise<students[]> {
     try {
